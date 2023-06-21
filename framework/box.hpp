@@ -1,5 +1,6 @@
 #include <glm/vec3.hpp>
 #include "shape.hpp"
+
 class Box : public Shape {
 	public:
 		Box();
