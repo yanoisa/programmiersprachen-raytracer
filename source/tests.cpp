@@ -3,7 +3,8 @@
 #include "shape.hpp"
 #include "box.hpp"
 #include "sphere.hpp"
-
+#include <iostream>
+#include "color.hpp"
 
 TEST_CASE("sphere", "[sphere]") {
 	Sphere sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.0f);
@@ -33,6 +34,38 @@ TEST_CASE("box", "[box]") {
 	REQUIRE(box2.volume() == 8.0f);
 	REQUIRE(box3.area() == 92.0f);
 	REQUIRE(box3.volume() == 48.0f);
+}
+
+TEST_CASE("print","[print]") {
+	Color myColor;
+	myColor.r = 1.0f;
+	myColor.g = 0.5f;
+	myColor.b = 0.0f;
+	Sphere sphere1 = Sphere();
+	Sphere sphere2 = Sphere(glm::vec3(5.0f, 3.0f, 20.0f), 3.0f);
+	Sphere sphere3 = Sphere(glm::vec3(2.0f, 1.0f, 40.0f), 5.3f, myColor, std::string("Hallo"));
+	Sphere sphere4 = Sphere(glm::vec3(5.0f, 0.0f, 8.0f), 1.2f, Color{0.0f,0.35f,0.2f}, std::string("Tschss"));
+	Box box1 = Box();
+	Box box2 = Box(glm::vec3(2.0f, 1.0f, 4.0f), glm::vec3(1.0f, 3.0f, 16.7f) );
+	Box box3 = Box(glm::vec3(0.0f, 0.1f, 1.0f), glm::vec3(1.1f, 3.3f, 16.16f), Color{ 0.6f,0.8f,0.0f }, std::string("12344121"));
+	Box box4 = Box(glm::vec3(3.0f,3.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), Color{ 0.0f,0.0f,0.0f }, std::string(""));
+	std::cout << sphere1;	
+	std::cout << "\n";
+	std::cout << sphere1;
+	std::cout << "\n";
+	std::cout << sphere3;
+	std::cout << "\n";
+	std::cout << sphere4;
+	std::cout << "\n";
+	std::cout << box1;
+	std::cout << "\n";
+	std::cout << box1;
+	std::cout << "\n";
+	std::cout << box3;
+	std::cout << "\n";
+	std::cout << box4;
+
+	
 }
 int main(int argc, char *argv[])
 {

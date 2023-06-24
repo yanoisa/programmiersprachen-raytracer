@@ -2,13 +2,13 @@
 #include "color.hpp"
 
 Shape::Shape(): color_{}, name_{} {}
-Shape::Shape(Color color, std::string const& name) : color_{ color }, name_{name} {}
-std::ostream& Shape::print(std::ostream& os) const{
-	Shape::print(os);
-	return os << name_<<color_;
+Shape::Shape(Color  color, std::string const& name) : color_{color}, name_{name} {}
+std::ostream& Shape::print(std::ostream& os) const {
+    os <<" name " <<name_ <<" color " <<color_;
+    return os;
 }
 
 std::ostream& operator<<(std::ostream& os, Shape const& s)
 {
-	s.print(os);
+	return s.print(os);
 }
