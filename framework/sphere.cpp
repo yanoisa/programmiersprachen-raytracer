@@ -5,6 +5,7 @@
 #include <glm/gtx/string_cast.hpp>
 #include "shape.hpp"
 #include "color.hpp"
+#include <glm/gtx/intersect.hpp>
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
@@ -16,6 +17,27 @@ float Sphere::area()const {
 }
 float Sphere::volume()const {
 	return (4.0f/3.0f) * M_PI * pow(radius_,3);
+}
+HitPoint Sphere::intersect(Ray const& ray) const{
+    HitPoint hit;
+
+    float distance = 0.0f;
+    bool hasIntersection = glm::intersectRaySphere(
+        ray.origin, ray.direction,
+        point_, radius_ * radius_,
+        distance);
+
+    if (hasIntersection)
+    {
+        hit.cut = true;
+        hit.distance = distance;
+        hit.name = name_;
+        hit.color = color_;
+        hit.point = ray.getPoint(distance);
+        hit.direction = ray.direction;
+    }
+
+    return hit;
 }
 std::ostream& Sphere::print(std::ostream& os) const {
     Shape::print(os);

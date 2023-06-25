@@ -23,6 +23,8 @@ add_executable(tests
   ../framework/shape.hpp
   ../framework/box.hpp
   ../framework/sphere.hpp
+  ../framework/ray.hpp
+  ../framework/hitpoint.hpp
   tests.cpp)
 target_link_libraries(tests
   ${GLFW_LIBRARIES}
