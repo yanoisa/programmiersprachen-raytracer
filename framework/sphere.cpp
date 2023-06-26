@@ -12,6 +12,7 @@
 Sphere::Sphere() : point_(), radius_(0.0f), color_{}, name_{} {}
 Sphere::Sphere(glm::vec3 const& point, float radius) :point_(point), radius_(radius), color_{}, name_{} {}
 Sphere::Sphere(glm::vec3 const& point, float radius, Color const& color, std::string const& name):Shape(color, name), point_(point), radius_(radius), color_(color), name_(name){}
+Shape::~Shape() {}
 float Sphere::area()const {
 	return radius_ * radius_ * 4 * M_PI;
 }

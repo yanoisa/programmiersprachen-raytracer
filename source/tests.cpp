@@ -84,8 +84,16 @@ TEST_CASE("print","[print]") {
 	std::cout << box3;
 	std::cout << "\n";
 	std::cout << box4;
-
-	
+}
+TEST_CASE("Aufgabe5.8","[Aufgabe5.8]") {
+	Color red{ 255 , 0, 0 };
+	glm::vec3 position{ 0.0f, 0.0f, 0.0f };
+	Sphere* s1 = new Sphere{ position , 1.2f, red , " sphere0 " };
+	Shape* s2 = new Sphere{ position , 1.2f, red , " sphere1 " };
+	s1->print(std::cout);
+	s2->print(std::cout);
+	delete s1;
+	delete s2;
 }
 int main(int argc, char *argv[])
 {

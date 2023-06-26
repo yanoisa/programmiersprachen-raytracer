@@ -8,6 +8,7 @@ Box::Box() :min_{}, max_{}, name_{}, color_{} {}
 Box::Box(glm::vec3 const& min, glm::vec3 const& max) :min_{ min }, max_{ max }, name_{}, color_{} {}
 Box::Box(glm::vec3 const& min, glm::vec3 const& max, Color const& color, std::string const& name)
 	: Shape(color, name), min_(min), max_(max), color_(color), name_(name){}
+Box::~Box() {}
 float Box::area()const {
 	float x = std::abs(max_.x - min_.x);
 	float y = std::abs(max_.y - min_.y);
