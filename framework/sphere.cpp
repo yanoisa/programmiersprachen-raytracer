@@ -9,13 +9,13 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
-Sphere::Sphere() : point_(), radius_(0.0f), color_{}, name_{} {
+Sphere::Sphere() : point_(), radius_(0.0f) /*,color_{}, name_{}*/ {
    // std::cout << "SphereKon"<<"\n";
 }
-Sphere::Sphere(glm::vec3 const& point, float radius) :point_(point), radius_(radius), color_{}, name_{} {
+Sphere::Sphere(glm::vec3 const& point, float radius) :point_(point), radius_(radius)/*,color_{}, name_{}*/ {
    // std::cout << "SphereKon" << "\n";
 }
-Sphere::Sphere(glm::vec3 const& point, float radius, Color const& color, std::string const& name):Shape(color, name), point_(point), radius_(radius), color_(color), name_(name){
+Sphere::Sphere(glm::vec3 const& point, float radius, Color const& color, std::string const& name):Shape(color, name), point_(point), radius_(radius)/*,color_{}, name_{}*/ {
    // std::cout << "SphereKon" << "\n";
 }
 Sphere::~Sphere() {
@@ -42,8 +42,8 @@ HitPoint Sphere::intersect(Ray const& ray) const{
     if (hasIntersection) {
         hit.cut = true;
         hit.distance = distance;
-        hit.name = name_;
-        hit.color = color_;
+        hit.name = Shape::getName();
+        hit.color =Shape::getColor();
         hit.point = ray.origin + glm::normalize(ray.direction) * hit.distance;
         hit.direction = ray.direction;
     }

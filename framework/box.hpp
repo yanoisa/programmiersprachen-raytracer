@@ -14,6 +14,6 @@ class Box : public Shape {
 	private:
 		glm::vec3	min_;
 		glm::vec3	max_;
-		Color color_;
-		std::string name_;
+		//Color color_;
+		//std::string name_;
 };

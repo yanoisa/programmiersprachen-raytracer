@@ -17,6 +17,6 @@ class Sphere : public Shape {
 	private:
 		glm::vec3	point_;
 		float	radius_;
-		Color color_;
-		std::string name_;
+		//Color color_;
+		//std::string name_;
 };

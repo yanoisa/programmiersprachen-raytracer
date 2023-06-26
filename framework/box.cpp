@@ -4,10 +4,10 @@
 #include <glm/gtx/string_cast.hpp>
 #include "shape.hpp"
 #include "color.hpp"
-Box::Box() :min_{}, max_{}, name_{}, color_{} {}
-Box::Box(glm::vec3 const& min, glm::vec3 const& max) :min_{ min }, max_{ max }, name_{}, color_{} {}
+Box::Box() :Shape::Shape(), min_{}, max_{}/*,color_{}, name_{}*/ {}
+Box::Box(glm::vec3 const& min, glm::vec3 const& max) :Shape::Shape(), min_{ min }, max_{ max }/*,color_{}, name_{}*/ {}
 Box::Box(glm::vec3 const& min, glm::vec3 const& max, Color const& color, std::string const& name)
-	: Shape(color, name), min_(min), max_(max), color_(color), name_(name){}
+	: Shape(color, name), min_(min), max_(max)/*,color_{}, name_{}*/ {}
 Box::~Box() {}
 float Box::area()const {
 	float x = std::abs(max_.x - min_.x);
