@@ -7,6 +7,8 @@
 #include "color.hpp"
 # include <glm/glm.hpp>
 # include <glm/gtx/intersect.hpp>
+#include "hitpoint.hpp"
+
 TEST_CASE("intersect_ray_sphere","[intersect]")
 {
 	// Ray
@@ -25,6 +27,29 @@ TEST_CASE("intersect_ray_sphere","[intersect]")
 		sphere_radius * sphere_radius, // squared radius !!!
 		distance);
 	REQUIRE(distance == Approx(4.0f));
+	
+	Ray r{ glm::vec3{0.0f,3.0f,3.0f},glm::vec3{3.0f,3.0f,3.0f} };
+	r.direction = glm::normalize(r.direction);
+	HitPoint h{};
+	Sphere s{ glm::vec3{-10.0f,-20.0f,-20.0f}, 1.0f };
+	h = s.intersect(r);
+	REQUIRE(false ==h.cut);
+	Ray r1{ glm::vec3{0.0f, 0.0f, 0.0f}, glm::vec3{0.0f, 0.0f, 1.0f} };
+	HitPoint h1{};
+	Sphere s1{ glm::vec3{0.0f ,0.0f, 5.0f}, 1.0f };
+	h1 = s1.intersect(r1);
+	std::cout << "Actual distance: " << h1.distance << std::endl;
+	REQUIRE(true == h1.cut);
+	REQUIRE(h1.distance == Approx(4.0f));
+
+	Ray ray{ glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 0.0f, 0.0f, -1.0f } };
+	ray.direction = glm::normalize(ray.direction);
+	HitPoint hit{};
+	Sphere sphere{ glm::vec3{ 0.0f, 0.0f, 5.0f }, 4.0f };
+	hit = sphere.intersect(ray);
+	REQUIRE(hit.cut == false);
+	REQUIRE(hit.distance == -107374176.0f);
+	REQUIRE(hit.point == glm::vec3{ 0.0f, 0.0f, 0.0f });
 }
 TEST_CASE("sphere", "[sphere]") {
 	Sphere sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.0f);
@@ -57,7 +82,7 @@ TEST_CASE("box", "[box]") {
 }
 
 TEST_CASE("print","[print]") {
-	Color myColor;
+	Color myColor{};
 	myColor.r = 1.0f;
 	myColor.g = 0.5f;
 	myColor.b = 0.0f;

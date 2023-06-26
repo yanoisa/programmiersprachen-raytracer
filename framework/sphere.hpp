@@ -8,11 +8,12 @@ class Sphere : public Shape {
 		Sphere();
 		Sphere(glm::vec3 const& point, float radius);
 		Sphere(glm::vec3 const& point, float radius, Color const& color, std::string const& name);
-		~Sphere()override;
+		~Sphere()/*override */;
 		float area() const override;
 		float volume() const override;
 		std::ostream& print(std::ostream& os) const override;
 		HitPoint intersect(Ray const& ray) const;
+		float getRadius()const;
 	private:
 		glm::vec3	point_;
 		float	radius_;

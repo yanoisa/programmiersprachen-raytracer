@@ -5,7 +5,7 @@ class Shape {
 	public:
 		Shape();
 		Shape(Color color, std::string const& name);
-		virtual ~Shape();
+		/*virtual */ ~Shape();
 		virtual float area() const = 0;
 		virtual float volume() const = 0;
 		virtual std::ostream& print(std::ostream& os) const;

@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 struct HitPoint
 {
-	bool cut;
+	bool cut = false;
 	float distance;
 	std::string name;
 	Color color;
